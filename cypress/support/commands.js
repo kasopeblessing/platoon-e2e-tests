@@ -23,12 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-/*
-it('creates account with valid details', () => {
-  const timestamp = Date.now()
-  cy.get('#Email').type(`testuser${timestamp}@yopmail.com`)
-  cy.get('#company_name').type(`Test Company ${timestamp}`)
-  cy.get('#password').type('Password123!')
-  cy.contains('Create Account').click()
-  cy.contains('verify your email', { matchCase: false }).should('be.visible')
-})*/
+import './commands'
+
+Cypress.Commands.add('login', () => {
+  cy.visit('https://biz.qa.platoonco.com/login')
+  cy.get('#Email').type('demo1@yopmail.com')
+  cy.get('#password').type('Password@123')
+  cy.get('button').contains('Login').click()
+  cy.contains('CLOSE').click()
+})
+
+Cypress.Commands.add('loginKYC', () => {
+  cy.visit('https://biz.qa.platoonco.com/login')
+  cy.get('#Email').type('kycaccount@yopmail.com')
+  cy.get('#password').type('Password@123')
+  cy.get('button').contains('Login').click()
+  cy.contains('CLOSE').click()
+})
