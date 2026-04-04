@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+/*
+it('creates account with valid details', () => {
+  const timestamp = Date.now()
+  cy.get('#Email').type(`testuser${timestamp}@yopmail.com`)
+  cy.get('#company_name').type(`Test Company ${timestamp}`)
+  cy.get('#password').type('Password123!')
+  cy.contains('Create Account').click()
+  cy.contains('verify your email', { matchCase: false }).should('be.visible')
+})*/
