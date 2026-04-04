@@ -9,11 +9,9 @@ beforeEach(() => {
 })
 
   // DASHBOARD VERIFICATION BANNER
-  it('shows account verification banner on dashboard', () => {
-    cy.contains('Account verification').should('be.visible')
-    cy.contains('Take a few seconds to complete your account setup.')
-      .should('be.visible')
-  })
+  it('shows approval pending popup', () => {
+    cy.contains('Approval Pending').should('be.visible')
+    })
 
   /*
  it('verification banner arrow links to account verification page', () => {
@@ -29,7 +27,7 @@ beforeEach(() => {
     cy.contains('Business documents').should('be.visible')
   })
 
-  // ---- BUSINESS OWNER FORM FIELDS ----
+  //  BUSINESS OWNER FORM FIELDS
   it('shows all business owner form fields', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/account-verification')
     cy.get('input[placeholder="Johnston"]').should('be.visible')
@@ -47,7 +45,7 @@ beforeEach(() => {
     cy.contains('Submit').should('be.visible')
   })
 
-  // ---- BUSINESS DOCUMENTS ----
+  // BUSINESS DOCUMENTS
   it('shows business documents section', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/account-verification')
     cy.contains('Business documents').should('be.visible')
@@ -59,7 +57,7 @@ beforeEach(() => {
     cy.contains('Select type').should('be.visible')
   })
 
-  // ---- VALIDATION ----
+  // VALIDATION
   it('blocks submission with empty fields', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/account-verification')
     cy.contains('Submit').click()
@@ -76,7 +74,7 @@ beforeEach(() => {
   })
 */
 
-// ---- BUSINESS DOCUMENTS ----
+// BUSINESS DOCUMENTS
 it('shows business documents section', () => {
   cy.contains('Business documents').should('be.visible')
   cy.contains('Select company type').should('be.visible')

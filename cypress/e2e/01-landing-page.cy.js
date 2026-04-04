@@ -95,7 +95,7 @@ describe('Landing Page', () => {
   it('subscribe accepts valid email', () => {
     cy.visit('https://qa.platoonco.com/about')
     cy.get('input[placeholder="Your email"]').scrollIntoView()
-      .type('test@yopmail.com')
+      .type(`test@yopmail.com`)
     cy.contains('Subscribe').click()
   })
 

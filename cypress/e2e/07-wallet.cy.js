@@ -4,7 +4,7 @@ describe('Fund Wallet', () => {
     cy.login()
   })
 
-  // ---- PAGE LOAD ----
+  // PAGE LOAD
   it('shows wallet section on dashboard', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/home')
     cy.contains('Wallet').should('be.visible')
@@ -18,6 +18,13 @@ describe('Fund Wallet', () => {
     cy.url().should('include', '/mywallet/accounts')
   })
 
+    it('Transaction History goes to wallet page', () => {
+    cy.visit('https://biz.qa.platoonco.com/dashboard/home')
+    cy.contains('Transaction History').click()
+    cy.url().should('include', '/mywallet/transactions')
+  })
+
+
   it('wallet page loads correctly', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/mywallet/accounts')
     cy.contains('Wallet Balance').should('be.visible')
@@ -26,7 +33,7 @@ describe('Fund Wallet', () => {
   it('shows account details to fund wallet', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/mywallet/accounts')
     cy.contains('Account number').should('be.visible')
-    cy.contains('Accouunt Name').should('visible')
+    cy.contains('Account Name').should('visible')
   })
 
 })
