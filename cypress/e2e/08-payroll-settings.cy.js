@@ -6,7 +6,7 @@
     cy.get('body').should('not.have.css', 'pointer-events', 'none')
   })
  
- // ---- PAYROLL SETTINGS MODAL ----
+ // PAYROLL SETTINGS MODAL
 it('Payroll Settings button opens settings modal', () => {
   cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/history')
   cy.get('body').should('not.have.css', 'pointer-events', 'none')
