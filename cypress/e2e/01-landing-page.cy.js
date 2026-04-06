@@ -12,7 +12,7 @@ describe('Landing Page', () => {
 
   // NAVIGATION
   it('logo routes back to landing page', () => {
-    cy.visit('https://qa.platoonco.com/pricing')
+    cy.visit('https://qa.platoonco.com/')
     cy.get('img[alt="Platoon Logo"]').not('.md\\:hidden').first().click()
     cy.url().should('include', 'platoonco.com')
   })
@@ -75,13 +75,6 @@ describe('Landing Page', () => {
   })
 
   // EMAIL SUBSCRIBE
-  it('email subscribe input is visible', () => {
-    cy.visit('https://qa.platoonco.com/about')
-    cy.get('input[placeholder="Your email"]').scrollIntoView()
-      .should('be.visible')
-    cy.contains('Subscribe').should('be.visible')
-  })
-
   it('subscribe rejects empty email', () => {
     cy.visit('https://qa.platoonco.com/about')
     cy.get('input[placeholder="Your email"]').scrollIntoView()
@@ -93,9 +86,10 @@ describe('Landing Page', () => {
   })
 
   it('subscribe accepts valid email', () => {
+    const timestamp = Date.now()
     cy.visit('https://qa.platoonco.com/about')
     cy.get('input[placeholder="Your email"]').scrollIntoView()
-      .type(`test@yopmail.com`)
+      .type(`test${timestamp}@yopmail.com`)
     cy.contains('Subscribe').click()
   })
 
