@@ -37,7 +37,7 @@ describe('Payroll History & Payslip Download', () => {
   // APPROVED PAYROLL PAGE
   it('clicking View on a disbursed payroll goes to approved page', () => {
     cy.contains('View').first().click({ force: true })
-    cy.url().should('include', '/dashboard/payroll/history/')
+    cy.url().should('include', '/dashboard/payroll/approved/')
   })
 
   it('approved payroll page shows correct sections', () => {
@@ -103,7 +103,7 @@ describe('Payroll History & Payslip Download', () => {
     cy.contains('Download CSV').click({ force: true })
   })
 
-  // ---- PAYSLIP PAGE ----
+  // PAYSLIP PAGE
   it('Generate Payslip button goes to payslips page', () => {
     cy.contains('View').first().click({ force: true })
     cy.get('body').should('not.have.css', 'pointer-events', 'none')

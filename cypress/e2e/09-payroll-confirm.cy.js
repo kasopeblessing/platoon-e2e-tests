@@ -45,7 +45,7 @@ describe('Submit Payroll', () => {
     cy.contains('Submit Payroll').should('be.visible')
   })
 
-  // ---- INSUFFICIENT BALANCE ----
+  // INSUFFICIENT BALANCE
   it('blocks payroll submission with insufficient wallet balance', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/summary?payrollId=217')
     cy.get('body').should('not.have.css', 'pointer-events', 'none')
@@ -54,7 +54,7 @@ describe('Submit Payroll', () => {
     cy.contains('insufficient', { matchCase: false }).should('be.visible')
   })
 
-  // ---- BACK NAVIGATION ----
+  // BACK NAVIGATION
   it('back arrow navigates away from summary page', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/summary?payrollId=217')
     cy.get('body').should('not.have.css', 'pointer-events', 'none')
