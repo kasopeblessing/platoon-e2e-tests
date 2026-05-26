@@ -26,7 +26,7 @@ describe('Payroll', () => {
   it('shows payroll history section', () => {
     cy.contains('Payroll History').should('be.visible')
     cy.contains('View past payroll records').should('be.visible')
-    cy.contains('Filter by Date').should('be.visible')
+    cy.contains('Sort by Date').should('be.visible')
   })
 
 
@@ -90,6 +90,14 @@ it('Download CSV Template button works', () => {
       .selectFile('cypress/fixtures/sample-payroll.csv', { force: true })
   })
 
+  it ('Proceed button works after CSV upload', () => {
+    cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/history')
+    cy.contains('Bulk Payment').click()
+    cy.contains('Import New CSV').click()
+    cy.get('input[type="file"]')
+      .selectFile('cypress/fixtures/sample-payroll.csv', { force: true })
+    cy.contains('proceed').click()
+  })
   /*
   it('modal closes when X is clicked', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/history')
