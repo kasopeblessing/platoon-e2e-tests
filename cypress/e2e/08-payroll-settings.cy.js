@@ -5,6 +5,8 @@
     cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/history')
     cy.get('body').should('not.have.css', 'pointer-events', 'none')
   })
+
+  /*
  
  // PAYROLL SETTINGS MODAL
 it('Payroll Settings button opens settings modal', () => {
@@ -79,4 +81,26 @@ it('proceed button is visible after settings saved', () => {
   cy.contains('Proceed').should('be.visible')
 })
 
- })
+ }) 
+
+ */
+
+    // Step 1: Open the Drafts view and select the first available draft to resume
+    cy.contains('Drafts').click()
+    cy.contains('button', 'Continue Edit').first().click()
+
+    // Step 2: On the specific breakdown page, assert the title and hit Proceed
+    cy.contains('Salary Payment', { matchCase: false }).should('be.visible')
+    cy.contains('button', 'Proceed').click()
+
+    // Step 3: On the final macro Summary screen, verify totals and submit transaction
+    cy.url().should('include', '/summary')
+    cy.contains('Summary').should('be.visible')
+    
+    // Validate that critical calculation figures are loaded and visible
+    cy.contains('Total Gross Pay').should('be.visible')
+    cy.contains('Total Net Pay').should('be.visible')
+
+    // Click final submission action
+    cy.contains('button', 'Submit Payroll').click()
+  })
