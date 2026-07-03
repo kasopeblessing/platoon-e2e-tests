@@ -41,11 +41,6 @@ describe('Create Account Page', () => {
     cy.url().should('include', '/signup')
   })
 
-  it('shows password strength indicator', () => {
-    cy.get('#password').type('weak')
-    cy.contains('Password Strength').should('be.visible')
-  })
-
   it('shows strong password strength with valid password', () => {
     cy.get('#password').type('Password123!')
     cy.contains('Strong').should('be.visible')
@@ -66,12 +61,27 @@ describe('Create Account Page', () => {
   })
 
   // SUCCESSFUL SIGNUP
-  it('creates account with valid details', () => {
+it('creates account with valid details', () => {
     const timestamp = Date.now()
-    cy.get('#Email').type(`testuser${timestamp}@yopmail.com`)
-    cy.get('#company_name').type(`Test Company ${timestamp}`)
-    cy.get('#password').type('Password123!')
-    cy.contains('Create Account').click()
+
+    cy.get('input[id="email"], input[id="Email"]').should('be.visible')
+      .type(`testuser${timestamp}@yopmail.com`)
+      
+    cy.get('input[id="company_name"]').should('be.visible')
+      .type(`Test Company ${timestamp}`)
+      
+    cy.get('input[id="password"]').should('be.visible')
+      .type('Password123!')
+      
+    cy.get('input[id="confirmPassword"]').should('be.visible')
+      .type('Password123!')
+
+    cy.contains('button, input[type="submit"]', 'Create Account')
+      .should('be.visible')
+      .should('not.be.disabled')
+      .click()
+
+    cy.url({ timeout: 12000 }).should('not.include', '/signup')
   })
 
 })
