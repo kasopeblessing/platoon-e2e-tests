@@ -52,7 +52,6 @@ describe('Login Page', () => {
     cy.get('#Email').type('demo1@yopmail.com')
     cy.get('#password').type('Password@123')
     cy.get('button').contains('Login').click()
-    cy.contains('CLOSE').click()
     cy.url({ timeout: 10000 }).should('include', '/dashboard')
   })
 
