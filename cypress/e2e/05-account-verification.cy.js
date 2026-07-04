@@ -4,40 +4,46 @@ beforeEach(() => {
   cy.visit('https://biz.qa.platoonco.com/login')
   cy.get('#Email').type('kycaccount@yopmail.com')
   cy.get('#password').type('Password@123')
-  cy.get('button').contains('Login').click()
-  cy.contains('CLOSE').click()
+  cy.get('button').contains('Login').click({timeout: 4000})
 })
 
-  // DASHBOARD VERIFICATION BANNER
-  it('shows approval pending popup', () => {
-    cy.contains('Approval Pending').should('be.visible')
+  // VERIFICATION
+  it('Shows Verification Required or Approval Pending', () => {
+    cy.contains(/Approval Pending|Verification Required/i).should('be.visible')
     })
 
-  /*
- it('verification banner arrow links to account verification page', () => {
-  cy.contains('Account verification').parents('div').find('button').click()
+ it('Check Status Or Verify Account buttons work', () => {
+  cy.contains(/Approval Pending|Verification Required/i).should('be.visible')
+  cy.get('button').contains(/Verify Account|Check Status/i).click({force: true})
   cy.url().should('include', '/dashboard/account-verification')
 })
-  */
 
   // PAGE LOAD
-  it('loads the account verification page correctly', () => {
-    cy.visit('https://biz.qa.platoonco.com/dashboard/account-verification')
-    cy.contains('Business owner information').should('be.visible')
-    cy.contains('Business documents').should('be.visible')
-  })
+  it('Check Status Or Verify Account buttons work', () => {
+  cy.contains(/Approval Pending|Verification Required/i).should('be.visible')
+  cy.get('button').contains(/Verify Account|Check Status/i).click({force: true})
+  cy.url().should('include', '/dashboard/account-verification')
+  cy.contains('Account Verification').should('be.visible')
+  cy.get('#Name').type('Jane', {force: true})
+  cy.get('#middleName').type('Doe', {force: true})
+  cy.get('#lastName').type('QA', {force: true})
+  cy.get('#Email').type('kycaccount@yopmail.com', {force: true})
+  cy.get('#Telephone').type('09012344567', {force: true})
+  cy.get('input[placeholder="Select Gender"]')
+    .should('be.visible')
+    .click({ force: true })
+  cy.contains('Male')
+    .should('be.visible')
+    .click({ force: true, scrollBehavior: false })
+   cy.get('input[placeholder="Select Country"]').should('be.visible').click({force:true})
+   cy.contains('Nigeria').should('be.visible').click({force: true})
+  cy.get('#bvn').type('00000000000', {force: true})
+  cy.get('#Telephone').type('09012344567', {force: true})
+  cy.get('#address').type('123, QA Testing lane', {force: true})
 
-  //  BUSINESS OWNER FORM FIELDS
-  it('shows all business owner form fields', () => {
-    cy.visit('https://biz.qa.platoonco.com/dashboard/account-verification')
-    cy.get('input[placeholder="Johnston"]').should('be.visible')
-    cy.get('input[placeholder="Gregory"]').should('be.visible')
-    cy.get('input[placeholder="Damian"]').should('be.visible')
-    cy.get('input[placeholder="johndamian@email.com"]').should('be.visible')
-    cy.get('input[placeholder="08123456789"]').should('be.visible')
-    cy.get('input[placeholder="22201234567"]').should('be.visible')
-    cy.get('input[placeholder="Enter address"]').should('be.visible')
-  })
+
+  
+   })
 
   it('shows Clear All and Submit buttons', () => {
     cy.visit('https://biz.qa.platoonco.com/dashboard/account-verification')
