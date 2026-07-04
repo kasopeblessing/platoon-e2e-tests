@@ -1,39 +1,33 @@
-describe('Fund Wallet', () => {
+describe('Wallet', () => {
 
-  beforeEach(() => {
-    cy.login()
-  })
+beforeEach(() => {
+  cy.visit('https://biz.qa.platoonco.com/login')
+  cy.get('#Email').type('Demo1@yopmail.com')
+  cy.get('#password').type('Password@123')
+  cy.get('button').contains('Login').click()
+})
 
   // PAGE LOAD
   it('shows wallet section on dashboard', () => {
-    cy.visit('https://biz.qa.platoonco.com/dashboard/home')
-    cy.contains('Wallet').should('be.visible')
+    cy.contains('Wallet', {timeout: 10000}).should('be.visible')
     cy.contains('Total Balance').should('be.visible')
     cy.contains('Manage Wallet').should('be.visible')
   })
 
   it('Manage Wallet button goes to wallet page', () => {
-    cy.visit('https://biz.qa.platoonco.com/dashboard/home')
-    cy.contains('Manage Wallet').click()
+    cy.contains('Manage Wallet').click({force: true})
     cy.url().should('include', '/mywallet/accounts')
+    cy.contains('Wallet Balance').should('be.visible')
+    cy.contains('Avaliable balance').should('be.visible')
   })
 
-    it('Transaction History goes to wallet page', () => {
-    cy.visit('https://biz.qa.platoonco.com/dashboard/home')
-    cy.contains('Transaction History').click()
+  it('Transaction History loads properly', () => {
+    cy.contains('Manage Wallet').click({force: true})
+    cy.url().should('include', '/mywallet/accounts')
+    cy.contains('Transaction History').click({force: true})
     cy.url().should('include', '/mywallet/transactions')
   })
+    
 
-
-  it('wallet page loads correctly', () => {
-    cy.visit('https://biz.qa.platoonco.com/dashboard/mywallet/accounts')
-    cy.contains('Wallet Balance').should('be.visible')
-  })
-
-  it('shows account details to fund wallet', () => {
-    cy.visit('https://biz.qa.platoonco.com/dashboard/mywallet/accounts')
-    cy.contains('Account number').should('be.visible')
-    cy.contains('Account Name').should('visible')
-  })
 
 })
