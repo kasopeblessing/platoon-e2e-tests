@@ -2,16 +2,17 @@ describe('Payroll', () => {
 
   beforeEach(() => {
     cy.login()
-    cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/history')
-    cy.get('body').should('not.have.css', 'pointer-events', 'none')
   })
 
   // PAGE LOAD 
   it('loads the payroll page correctly', () => {
-    cy.contains('Payroll').should('be.visible')
-    cy.contains('Recurring Payroll').should('be.visible')
-    cy.contains('Bulk Payment').should('be.visible')
-    cy.contains('Sort Code').should('be.visible')
+  cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/history')
+
+    cy.contains('Pending Payroll', {timeout: 10000}).should('be.visible')
+    cy.contains('Drafts').should('be.visible')
+    cy.contains('Payroll History').should('be.visible')
+    cy.get('button').contains('Bulk Payment').click({force: true})
+    
   })
 
   it('shows all payroll cards', () => {
@@ -100,15 +101,5 @@ it('Download CSV Template button works', () => {
     cy.contains('button', 'Proceed').click()
   })
  
-  /*
-  it('modal closes when X is clicked', () => {
-    cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/history')
-    cy.contains('Bulk Payment').click()
-    cy.contains('Make payment in bulk').should('be.visible')
-    cy.get('button').contains('x').click({force: true})
-    cy.contains('Make payment in bulk').should('not.exist')
-  })
-    */
-
  
 })

@@ -1,10 +1,7 @@
 describe('Wallet', () => {
 
 beforeEach(() => {
-  cy.visit('https://biz.qa.platoonco.com/login')
-  cy.get('#Email').type('Demo1@yopmail.com')
-  cy.get('#password').type('Password@123')
-  cy.get('button').contains('Login').click()
+  cy.login()
 })
 
   // PAGE LOAD
@@ -18,7 +15,7 @@ beforeEach(() => {
     cy.contains('Manage Wallet').click({force: true})
     cy.url().should('include', '/mywallet/accounts')
     cy.contains('Wallet Balance').should('be.visible')
-    cy.contains('Avaliable balance').should('be.visible')
+    cy.contains('Available balance').should('be.visible')
   })
 
   it('Transaction History loads properly', () => {
@@ -28,6 +25,4 @@ beforeEach(() => {
     cy.url().should('include', '/mywallet/transactions')
   })
     
-
-
 })
