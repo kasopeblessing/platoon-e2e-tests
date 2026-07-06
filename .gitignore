@@ -1,0 +1,12 @@
+# Dependencies
+node_modules/
+
+# IDE / Local settings
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Cypress specific local artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
