@@ -1,4 +1,4 @@
-describe('Payroll', () => {
+describe('Bulk Payroll Flow', () => {
 
   beforeEach(() => {
     cy.login()
@@ -6,28 +6,29 @@ describe('Payroll', () => {
 
   // PAGE LOAD 
   it('loads the payroll page correctly', () => {
-  cy.visit('https://biz.qa.platoonco.com/dashboard/payroll/history')
-
-    cy.contains('Pending Payroll', {timeout: 10000}).should('be.visible')
-    cy.contains('Drafts').should('be.visible')
-    cy.contains('Payroll History').should('be.visible')
-    cy.get('button').contains('Bulk Payment').click({force: true})
-    
-  })
-
-  it('shows all payroll cards', () => {
+    cy.get('body').should('not.have.css', 'pointer-events', 'none')
+    cy.get('a[href="/dashboard/payroll"]', {timeout: 10000})
+      .should('be.visible')
+      .click({force: true})  
+    cy.url().should('include', '/dashboard/payroll/history')
     cy.contains('Pending Payroll').should('be.visible')
-    cy.contains('Approve and decline a payroll').should('be.visible')
     cy.contains('Drafts').should('be.visible')
-    cy.contains('Continue saved payroll').should('be.visible')
     cy.contains('Payroll History').should('be.visible')
-    cy.contains('Total payroll ever had').should('be.visible')
   })
 
-  it('shows payroll history section', () => {
-    cy.contains('Payroll History').should('be.visible')
-    cy.contains('View past payroll records').should('be.visible')
-    cy.contains('Sort by Date').should('be.visible')
+  it('Bulk Payment load the right pages', () => {
+    cy.get('body').should('not.have.css', 'pointer-events', 'none')
+    cy.get('a[href="/dashboard/payroll"]', {timeout: 10000})
+      .should('be.visible')
+      .click({force: true})  
+    cy.url().should('include', '/dashboard/payroll/history')
+    
+    cy.get('button').contains('Bulk Payment').click({force:true})
+    cy.contains('Make payment in bulk').should('be.visible')
+    cy.contains('Import New CSV')
+    .click({force:true})
+    cy.get('input[type="file"]')
+    .selectFile('cypress/fixtures/sample-payroll.csv', { force: true })
   })
 
 

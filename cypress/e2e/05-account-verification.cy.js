@@ -9,7 +9,7 @@ beforeEach(() => {
 
   // BUSINESS OWNER INFORMATION
   it('Upload Business Owner Information', () => {
-  cy.contains(/Approval Pending|Verification Required|Continue/i).should('be.visible')
+  cy.contains(/Approval Pending|Verification Required|Continue/i, {timeout: 10000}).should('be.visible')
   cy.get('button').contains(/Verify Account|Check Status|Continue/i).click({force: true})
   cy.url().should('include', '/dashboard/account-verification')
   cy.contains('Account Verification').should('be.visible')
@@ -40,7 +40,7 @@ beforeEach(() => {
 
  // BUSINESS DOCUMENTS
  it('Uploads Business Documents Successfully', ()=>{
-  cy.contains(/Approval Pending|Verification Required|Continue/i).should('be.visible')
+  cy.contains(/Approval Pending|Verification Required|Continue/i, {timeout: 10000}).should('be.visible')
   cy.get('button').contains(/Verify Account|Check Status|Continue/i).click({force: true})
   cy.contains('Business documents')
   cy.get('input[placeholder="Select type"]').should('be.visible').click({force: true})

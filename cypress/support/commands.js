@@ -42,10 +42,3 @@ Cypress.Commands.add('login', () => {
   cy.get('button').contains('Login').click()
 })
 
-Cypress.Commands.add('loginKYC', () => {
-  cy.visit('https://biz.qa.platoonco.com/login')
-  cy.get('#Email').type('kycaccount@yopmail.com')
-  cy.get('#password').type('Password@123')
-  cy.get('button').contains('Login').click()
-  cy.contains('CLOSE').click()
-})
