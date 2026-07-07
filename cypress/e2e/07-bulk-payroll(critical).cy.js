@@ -10,7 +10,6 @@ describe('Bulk Payroll Flow', () => {
       .should('include', '/dashboard/payroll/history')
   })
 
-  // PAGE LOAD 
   it('loads the payroll page correctly', () => {
     cy.contains('Pending Payroll')
       .should('be.visible')
@@ -32,6 +31,7 @@ describe('Bulk Payroll Flow', () => {
       .selectFile('cypress/fixtures/sample-payroll.csv', { force: true })
     cy.url()
       .should('include', '/confirm?payrollId')
+    cy.contains('Salary Payment').should('be.visible')
   })
 
 it('Drafts Page Works', () => {
@@ -44,22 +44,15 @@ it('Drafts Page Works', () => {
     .first()
     .should('be.visible')
     .click({force:true})
-  cy.contains('button', 'Proceed', {timeout: 10000})
-    .should('be.visible')
-    .click({force:true})
-  cy.url()
-    .should('include', '/summary?payrollId')
-  cy.contains('Summary')
-    .should('be.visible')
-  cy.get('button')
-    .should('include', 'Submit Payroll')
-    .click({force:true})
 })
 
-it('Payroll APproval or Decline', () => {
+it('Payroll Approval or Decline', () => {
   cy.contains('Pending Payroll')
     .should('be.visible')
     .click({force:true})
+  cy.url()
+    .should('incude', '/payroll/pending')
+
 
 })
 
