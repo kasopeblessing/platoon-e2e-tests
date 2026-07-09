@@ -1,0 +1,70 @@
+describe('KYC - Account Verification', () => {
+
+beforeEach(() => {
+  cy.visit('https://biz.qa.platoonco.com/login')
+  cy.get('#Email').type('kycaccount@yopmail.com')
+  cy.get('#password').type('Password@123')
+  cy.get('button').contains('Login').click({timeout: 7000})
+})
+
+  // BUSINESS OWNER INFORMATION
+  it('Upload Business Owner Information', () => {
+  cy.contains(/Approval Pending|Verification Required|Continue/i, {timeout: 10000}).should('be.visible')
+  cy.get('button').contains(/Verify Account|Check Status|Continue/i).click({force: true})
+  cy.url().should('include', '/dashboard/account-verification')
+  cy.contains('Account Verification').should('be.visible')
+  cy.get('#Name').type('Jane', {force: true})
+  cy.get('#middleName').type('Doe', {force: true})
+  cy.get('#lastName').type('QA', {force: true})
+  cy.get('#Email').type('kycaccount@yopmail.com', {force: true})
+  cy.get('#Telephone').type('09012344567', {force: true})
+  cy.get('input[placeholder="Select Gender"]')
+    .should('be.visible')
+    .click({ force: true })
+  cy.contains('Male')
+    .should('be.visible')
+    .click({ force: true, scrollBehavior: false })
+  cy.get('input[placeholder="Select Country"]')
+    .should('be.visible')
+    .click({force:true})
+  cy.contains('Nigeria')
+    .should('be.visible')
+    .click({force: true})
+  cy.get('#bvn').type('00000000000', {force: true})
+  cy.get('#Telephone').type('09012344567', {force: true})
+  cy.get('#address').type('123, QA Testing lane', {force: true})
+
+  cy.get('button').contains('Submit').click({force:true})
+  
+ })
+
+ // BUSINESS DOCUMENTS
+ it('Uploads Business Documents Successfully', ()=>{
+  cy.contains(/Approval Pending|Verification Required|Continue/i, {timeout: 10000}).should('be.visible')
+  cy.get('button').contains(/Verify Account|Check Status|Continue/i).click({force: true})
+  cy.contains('Business documents')
+  cy.get('input[placeholder="Select type"]').should('be.visible').click({force: true})
+  cy.contains('Private Limited Company').should('be.visible').click({force:true})
+  cy.contains('You are required to upload these documents to complete your account verification.').should('be.visible')
+  cy.get('input#CACUpload')
+    .should('exist')
+    .selectFile('cypress/fixtures/test-document.pdf', { force: true })
+  cy.get('input#StatusReportUpload')
+    .should('exist')
+    .selectFile('cypress/fixtures/test-document.pdf', { force: true })
+  cy.get('input#MEMARTUpload')
+    .should('exist')
+    .selectFile('cypress/fixtures/test-document.pdf', { force: true })
+  cy.get('input#ProofOfAddressUpload')
+    .should('exist')
+    .selectFile('cypress/fixtures/test-document.pdf', { force: true })
+  cy.get('input#IDUpload')
+    .should('exist')
+    .selectFile('cypress/fixtures/test-document.pdf', { force: true })
+  cy.get('button').contains('Submit').click({force: true})
+
+ })
+
+  })
+
+ 
