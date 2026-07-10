@@ -10,8 +10,7 @@ describe('Payroll History & Payslip Download', () => {
       .should('include', '/dashboard/payroll/history')    
   })
 
-  // PAYROLL HISTORY PAGE
-  it('Loads Payroll History', () => {
+  it('Download Payslip', () => {
     cy.contains('tr', 'Disbursed')
       .contains('button, a, div', 'View') 
       .should('be.visible')

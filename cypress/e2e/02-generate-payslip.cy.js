@@ -6,11 +6,14 @@ describe('Payslip Generator - Step 1: Company & Employee Info', () => {
 
   it('accurately fills out the company and employee forms', () => {
     // 1. VERIFY CORE HEADERS ARE PRESENT
-    cy.contains('Company Information').should('be.visible')
-    cy.contains('Employee Information').should('be.visible')
+    cy.contains('Company Information')
+      .should('be.visible')
+    cy.contains('Employee Information')
+      .should('be.visible')
 
     // 2. FILL COMPANY INFORMATION
-    cy.get('input[placeholder="Enter company name"]').should('be.visible')
+    cy.get('input[placeholder="Enter company name"]')
+      .should('be.visible')
       .type('Platoon QA Corp')
 
     cy.get('input[placeholder="Enter company address"]')
@@ -52,7 +55,8 @@ describe('Payslip Generator - Step 1: Company & Employee Info', () => {
       .click({ scrollBehavior: false })
 
     // 6. GUARD ASSERTION FOR NEXT STEP
-    cy.url({ timeout: 10000 }).should('include', 'https://qa.platoonco.com/payslip-generator')
+    cy.url({ timeout: 10000 })
+      .should('include', 'https://qa.platoonco.com/payslip-generator')
   })
 
 
