@@ -55,6 +55,8 @@ beforeEach(() => {
     .contains('Submit')
     .click({force:true})
   
+  cy.url()
+    .should('include', '/account-verification', {timeout: 6000})
  })
 
  // BUSINESS DOCUMENTS
@@ -88,6 +90,7 @@ beforeEach(() => {
     .should('exist')
     .selectFile('cypress/fixtures/test-document.pdf', { force: true })
   cy.get('button').contains('Submit').click({force: true})
+
 
  })
 
