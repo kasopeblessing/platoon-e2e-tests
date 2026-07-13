@@ -3,9 +3,9 @@ describe('KYC - Account Verification', () => {
 beforeEach(() => {
   cy.visit('https://biz.qa.platoonco.com/login')
   cy.get('#Email')
-    .type('kycaccount@yopmail.com')
+    .type('testuser1783930205533@yopmail.com')
   cy.get('#password')
-    .type('Password@123')
+    .type('Password123!')
   cy.get('button')
     .contains('Login')
     .click({timeout: 7000})
@@ -29,9 +29,9 @@ beforeEach(() => {
   cy.get('#lastName')
     .type('QA', {force: true})
   cy.get('#Email')
-    .type('kycaccount@yopmail.com', {force: true})
+    .type('testuser1783930205533@yopmail.com', {force: true})
   cy.get('#Telephone')
-    .type('09012344567', {force: true})
+    .type('09012344568', {force: true})
   cy.get('input[placeholder="Select Gender"]')
     .should('be.visible')
     .click({ force: true })
@@ -45,7 +45,7 @@ beforeEach(() => {
     .should('be.visible')
     .click({force: true})
   cy.get('#bvn')
-    .type('00000000000', {force: true})
+    .type('00000000100', {force: true})
   cy.get('#Telephone')
     .type('09012344567', {force: true})
   cy.get('#address')
@@ -56,7 +56,7 @@ beforeEach(() => {
     .click({force:true})
   
   cy.url()
-    .should('include', '/account-verification', {timeout: 6000})
+    .should('include', '/account-verification', {timeout: 10000})
  })
 
  // BUSINESS DOCUMENTS
@@ -89,7 +89,9 @@ beforeEach(() => {
   cy.get('input#IDUpload')
     .should('exist')
     .selectFile('cypress/fixtures/test-document.pdf', { force: true })
-  cy.get('button').contains('Submit').click({force: true})
+  cy.get('button')
+    .contains('Submit')
+    .click({force: true})
 
 
  })

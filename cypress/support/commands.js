@@ -37,8 +37,8 @@ it('creates account with valid details', () => {
 
 Cypress.Commands.add('login', () => {
   cy.visit('https://biz.qa.platoonco.com/login')
-  cy.get('#Email').type('kashim@yopmail.com')
-  cy.get('#password').type('Password@123')
+  cy.get('#Email').type('testuser1783930205533@yopmail.com')
+  cy.get('#password').type('Password123!')
   cy.get('button').contains('Login').click()
 })
 
