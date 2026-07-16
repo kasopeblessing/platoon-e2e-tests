@@ -2,13 +2,7 @@ describe('KYC - Account Verification', () => {
 
 beforeEach(() => {
   cy.visit('https://biz.qa.platoonco.com/login')
-  cy.get('#Email')
-    .type('kycaccount@yopmail.com')
-  cy.get('#password')
-    .type('Password@123')
-  cy.get('button')
-    .contains('Login')
-    .click({timeout: 7000})
+  cy.loginKYC()
 })
 
   // BUSINESS OWNER INFORMATION

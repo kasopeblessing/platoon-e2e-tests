@@ -67,7 +67,7 @@ describe('Login Page', () => {
 
   // SUCCESSFUL LOGIN
   it('logs in with valid credentials', () => {
-    cy.loginVerified()
+    cy.login()
     cy.url({ timeout: 10000 })
       .should('include', '/dashboard')
   })
