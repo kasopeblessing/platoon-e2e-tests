@@ -1,34 +1,28 @@
-# ==========================================
-# 1. Project Dependencies (Banned from Git)
-# ==========================================
+# System & Dependencies
 node_modules/
 .DS_Store
 Thumbs.db
+.vscode/
 
-# ==========================================
-# 2. Cypress Test Artifacts & Temp Files
-# ==========================================
-# This ignores anything written to your downloads folder during run-time
-cypress/downloads/*
+# Exclude Everything EXCEPT the Core Essentials
+.github/
 
-# Ignores screenshots and videos from local runs
+# Exclude local Cypress test artifacts & downloads
+cypress/downloads/
 cypress/screenshots/
 cypress/videos/
 
-# ==========================================
-# 3. Security & Environments (CRITICAL)
-# ==========================================
-# Keeps your local secrets completely off GitHub
+# Exclude static mock files, PDFs, and CSVs
+cypress/fixtures/
+
+# Exclude custom commands files to prevent credential/utility leaks
+cypress/support/
+
+# Private Environment Variables
 cypress.env.json
 .env
-.env.local
-
-# Ignores the dynamic file used to pass account details between specs
 last-account.json
-last-created-account.json
 
-# ==========================================
-# 4. IDE / Editor Configurations
-# ==========================================
+# IDE / Editor Configurations
 .vscode/
 .idea/
