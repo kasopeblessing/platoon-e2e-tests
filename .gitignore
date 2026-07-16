@@ -10,3 +10,5 @@ Thumbs.db
 cypress/videos/
 cypress/screenshots/
 cypress/downloads/
+cypress/support/command.js
+cypress/fixtures
