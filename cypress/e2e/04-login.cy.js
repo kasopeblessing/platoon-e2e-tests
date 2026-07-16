@@ -67,13 +67,7 @@ describe('Login Page', () => {
 
   // SUCCESSFUL LOGIN
   it('logs in with valid credentials', () => {
-    cy.get('#Email')
-      .type('demo1@yopmail.com')
-    cy.get('#password')
-      .type('Password@123')
-    cy.get('button')
-      .contains('Login')
-      .click()
+    cy.loginVerified()
     cy.url({ timeout: 10000 })
       .should('include', '/dashboard')
   })
