@@ -44,16 +44,6 @@ it('Drafts Page Works', () => {
     .first()
     .should('be.visible')
     .click({force:true})
-})
-
-it('Payroll Approval or Decline', () => {
-  cy.contains('Pending Payroll')
-    .should('be.visible')
-    .click({force:true})
-  cy.url()
-    .should('incude', '/payroll/pending')
-
-
-})
+  })
 
 })

@@ -53,7 +53,7 @@ describe('Payroll Pending & Approval Flow', () => {
       .contains('Decline')
       .first()
       .click({force:true})
-      .contains('Payroll Declined')
+    cy.contains('Payroll Declined')
       .should('be.visible')
     })
 })
