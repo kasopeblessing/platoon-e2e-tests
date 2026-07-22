@@ -20,7 +20,7 @@ describe('Bulk Payroll Flow', () => {
   })
 
   it('Bulk Payment Upload works', () => {
-     cy.get('button')
+    cy.get('button')
       .contains('Bulk Payment')
       .click({force:true})
     cy.contains('Make payment in bulk')
@@ -43,6 +43,14 @@ it('Drafts Page Works', () => {
   cy.contains('button', 'Continue Edit')
     .first()
     .should('be.visible')
+    .click({force:true})
+  cy.contains('button', 'Proceed')
+    .closest('button')
+    .then(($btn) => {
+    $btn[0].click({force:true})
+  })
+  cy.get('button')
+    .contains('Submit Payroll')
     .click({force:true})
   })
 
