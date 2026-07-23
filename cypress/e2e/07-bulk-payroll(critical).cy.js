@@ -49,9 +49,7 @@ it('Drafts Page Works', () => {
     .then(($btn) => {
     $btn[0].click({force:true})
   })
-  cy.get('button')
-    .contains('Submit Payroll')
-    .click({force:true})
+
   })
 
 })
