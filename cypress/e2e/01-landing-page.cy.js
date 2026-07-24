@@ -4,76 +4,75 @@ describe('Landing Page', () => {
     cy.visit('https://qa.platoonco.com')
   })
 
-  // FIRST SCREEN
   it('shows the welcome page correctly', () => {
-    cy.contains(`Businesses shouldn't have to be their own payroll manager`).should('be.visible')
+    cy.contains(`Payroll for Middle-Market Businesses`)
+      .should('be.visible')
   })
 
-
-  // NAVIGATION
   it('logo routes back to landing page', () => {
-    cy.visit('https://qa.platoonco.com/')
-    cy.get('img[alt="Platoon Logo"]').not('.md\\:hidden').first().click()
-    cy.url().should('include', 'platoonco.com')
+    cy.visit('https://qa.platoonco.com/payroll')
+    cy.get('img[alt="Platoon logo dark"]')
+      .not('.md\\:hidden')
+      .first()
+      .click()
+    cy.contains('Payroll for Middle-Market Businesses')
+      .should('be.visible')
   })
 
-
-it('Pricing link goes to pricing page', () => {
-    // Force a direct browser navigation to bypass the hanging Next.js client-side router
-    cy.visit('https://qa.platoonco.com/pricing', { timeout: 4000 })
+it('Product button goes to the product page', () => {
+    cy.contains('Product')
+      .click()
     cy.url()
-    .should('include', '/pricing')
-    cy.contains('Pricing', { timeout: 4000 })
-    .should('be.visible')
+      .should('include', '/payroll')
+    cy.contains('THE PRODUCT', { timeout: 4000 })
+      .should('be.visible')
   })
   
-
-  it('About Us link goes to about page', () => {
-    // Force a direct browser navigation to bypass the hanging Next.js client-side router
-    cy.visit('https://qa.platoonco.com/about')
+it('Pricing button goes to the pricing page', () => {
+    cy.contains('Pricing')
+      .click()
+    cy.url()
+      .should('include', '/pricing')
+    cy.contains('No hidden fees.')
+      .should('be.visible')
+  })
+  
+ it('About button goes to the about page', () => {
+    cy.contains('About')
+      .click()
     cy.url()
       .should('include', '/about')
-    cy.contains('About Us')
+    cy.contains('We built Platoon because payday matters.')
       .should('be.visible')
-    })
+  })
 
-  it('Book a Demo link goes to demo page', () => {
-    // Force a direct browser navigation to bypass the hanging Next.js client-side router
-    cy.visit('https://qa.platoonco.com/demo')
+  it('Contact button goes to the contact page', () => {
+    cy.contains('Contact')
+      .click()
     cy.url()
-      .should('include', '/demo')
-    cy.contains('Demo Request Form')
+      .should('include', '/contact')
+    cy.contains('Talk to us about your payroll')
       .should('be.visible')
   })
 
-  it('Generate Payslip link goes to payslip generator', () => {
-    // Force a direct browser navigation to bypass the hanging Next.js client-side router
-    cy.visit('https://qa.platoonco.com/payslip-generator')
+ it('Login button goes to the login page', () => {
+    cy.get('button')
+      .contains('Login')
+      .click({force:true})
     cy.url()
-      .should('include', '/payslip-generator')
-    cy.contains('Payslip Generator')
+      .should('include', '/login')
+    cy.contains('Welcome')
       .should('be.visible')
-    cy.contains('Company Information').
-      should('be.visible')
   })
 
-  it('Get Started button goes to get started page', () => {
-    // Force a direct browser navigation to bypass the hanging Next.js client-side router
-    cy.visit('https://qa.platoonco.com/get-started')
+ it('Get Started button goes to the signup page', () => {
+    cy.contains('Get Started')
+      .click()
     cy.url()
-      .should('include', '/get-started')
-    cy.contains('Choose Your Path')
+      .should('include', '/signup')
+    cy.contains('Get started with Platoon')
       .should('be.visible')
   })
-
-  // ABOUT PAGE
-  it('about page shows main headline', () => {
-    cy.visit('https://qa.platoonco.com/about')
-    cy.contains('Who We Are')
-      .scrollIntoView()
-      .should('be.visible')
-  })
-
   // PRICING PAGE
   it('pricing page shows all three plans', () => {
     cy.visit('https://qa.platoonco.com/pricing')
