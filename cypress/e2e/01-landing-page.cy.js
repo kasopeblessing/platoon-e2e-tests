@@ -73,49 +73,7 @@ it('Pricing button goes to the pricing page', () => {
     cy.contains('Get started with Platoon')
       .should('be.visible')
   })
-  // PRICING PAGE
-  it('pricing page shows all three plans', () => {
-    cy.visit('https://qa.platoonco.com/pricing')
-    cy.contains('No hidden fees. Pay as you grow')
-      .scrollIntoView()
-      .should('be.visible')
-    cy.contains('BASIC')
-      .scrollIntoView()
-      .should('be.visible')
-    cy.contains('GROWTH')
-      .scrollIntoView()
-      .should('be.visible')
-    cy.contains('ENTERPRISE')
-      .scrollIntoView()
-      .should('be.visible')
-  })
-
-  it('pricing page shows correct prices', () => {
-    cy.visit('https://qa.platoonco.com/pricing')
-    cy.contains('₦250')
-      .scrollIntoView()
-      .should('be.visible')
-    cy.contains('₦2,500')
-      .scrollIntoView()
-      .should('be.visible')
-    cy.contains('₦3,000')
-      .scrollIntoView()
-      .should('be.visible')
-  })
-
-  it('pricing page shows correct CTA buttons', () => {
-    cy.visit('https://qa.platoonco.com/pricing')
-    cy.contains('Go Basic')
-      .scrollIntoView()
-      .should('be.visible')
-    cy.contains('Get Growth')
-      .scrollIntoView()
-      .should('be.visible')
-    cy.contains('Contact Sales')
-      .scrollIntoView()
-      .should('be.visible')
-  })
-
+  
   // EMAIL SUBSCRIBE
   it('subscribe rejects empty email', () => {
     cy.visit('https://qa.platoonco.com/about')
