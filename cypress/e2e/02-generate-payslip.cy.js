@@ -77,8 +77,15 @@ describe('Payslip Generator', () => {
     cy.contains('Download Payslip')
       .should('be.visible')
       .click()
-
  })
 
+ it('Pricing button on this page works', ()=> {
+
+     cy.contains('See Growth pricing')
+       .should('be.visible')
+       .click()
+     cy.url()
+       .should('include', '/pricing')
+  })
 
 })
