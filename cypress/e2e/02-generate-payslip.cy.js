@@ -9,7 +9,8 @@ describe('Payslip Generator', () => {
   })
 
  it('Payslip Generator core works', () => {
-    cy.url().should('include', '/payslip-generator')
+    cy.url()
+      .should('include', '/payslip-generator')
     cy.get('#company-name')
       .clear()
       .type('QA Test')
@@ -25,6 +26,10 @@ describe('Payslip Generator', () => {
       .type('emp-101')
 
     cy.get('input[id="pay-period"]')
+      .should('be.visible')
+      .click({force:true})
+    cy.contains('Aug')
+      .click()
 
     cy.get('input[id="payment-date"]')
  
@@ -80,7 +85,6 @@ describe('Payslip Generator', () => {
  })
 
  it('Pricing button on this page works', ()=> {
-
      cy.contains('See Growth pricing')
        .should('be.visible')
        .click()
