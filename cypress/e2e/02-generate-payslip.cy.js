@@ -4,7 +4,7 @@ describe('Payslip Generator', () => {
     cy.visit('https://qa.platoonco.com/')
     cy.get('a[href="/payslip-generator"]')
       .should('be.visible')
-      .last()
+      .eq(2)
       .click()
   })
 
@@ -28,8 +28,6 @@ describe('Payslip Generator', () => {
     cy.get('input[id="pay-period"]')
       .should('be.visible')
       .click({force:true})
-    cy.contains('Aug')
-      .click()
 
     cy.get('input[id="payment-date"]')
  
@@ -80,6 +78,7 @@ describe('Payslip Generator', () => {
       .type('45,000.00')
 
     cy.contains('Download Payslip')
+      .scrollIntoView()
       .should('be.visible')
       .click()
  })
