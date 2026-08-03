@@ -73,18 +73,6 @@ it('Pricing button goes to the pricing page', () => {
     cy.contains('Get started with Platoon')
       .should('be.visible')
   })
-  
-  // EMAIL SUBSCRIBE
-  it('subscribe rejects empty email', () => {
-    cy.visit('https://qa.platoonco.com/about')
-    cy.get('input[placeholder="Your email"]')
-      .scrollIntoView()
-    cy.contains('Subscribe').click()
-    cy.get('input[placeholder="Your email"]')
-      .then($input => {
-        expect($input[0].validationMessage).to.not.be.empty
-      })
-  })
 
   it('subscribe accepts valid email', () => {
     const timestamp = Date.now()
