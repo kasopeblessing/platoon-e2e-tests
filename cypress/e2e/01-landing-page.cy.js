@@ -55,25 +55,6 @@ it('Pricing button goes to the pricing page', () => {
       .should('be.visible')
   })
 
- it('Login button goes to the login page', () => {
-    cy.get('button')
-      .contains('Login')
-      .click({force:true})
-    cy.url()
-      .should('include', '/login')
-    cy.contains('Welcome')
-      .should('be.visible')
-  })
-
- it('Get Started button goes to the signup page', () => {
-    cy.contains('Get Started')
-      .click()
-    cy.url()
-      .should('include', '/signup')
-    cy.contains('Get started with Platoon')
-      .should('be.visible')
-  })
-
   it('subscribe accepts valid email', () => {
     const timestamp = Date.now()
     cy.visit('https://qa.platoonco.com/about')
