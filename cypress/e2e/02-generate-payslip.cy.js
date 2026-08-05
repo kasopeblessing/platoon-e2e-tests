@@ -77,10 +77,12 @@ describe('Payslip Generator', () => {
       .eq('5')
       .type('45,000.00')
 
-    cy.contains('Download Payslip')
-      .scrollIntoView()
-      .should('be.visible')
+    cy.get('.no-print button')
+      .contains('Download Payslip')
       .click()
+    
+    cy.contains('Preparing')
+      .should('be.visible')
  })
 
  it('Pricing button on this page works', ()=> {
