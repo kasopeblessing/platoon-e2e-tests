@@ -1,7 +1,6 @@
 describe('KYC - Account Verification', () => {
 
 beforeEach(() => {
-  cy.visit('https://biz.qa.platoonco.com/login')
   cy.loginKYC()
 })
 
