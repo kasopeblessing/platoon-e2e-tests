@@ -44,12 +44,13 @@ it('Drafts Page Works', () => {
     .first()
     .should('be.visible')
     .click({force:true})
-  cy.contains('button', 'Proceed')
-    .closest('button')
-    .then(($btn) => {
-    $btn[0].click({force:true})
+  cy.get('.flex.space-x-4')
+    .contains('Proceed')
+    .should('be.visible')
+    .click({force:true})
+  cy.url()
+    .should('include', '/summary?payrollId')
+    
   })
 
   })
-
-})
