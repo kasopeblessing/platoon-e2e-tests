@@ -28,3 +28,5 @@ last-account.json
 
 # Exclude a specific Cypress test file
 cypress/e2e/10-proll.cy.js
+
+cypress/e2e/11-admin.cy.js
