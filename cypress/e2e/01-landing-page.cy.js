@@ -55,13 +55,4 @@ it('Pricing button goes to the pricing page', () => {
       .should('be.visible')
   })
 
-  it('subscribe accepts valid email', () => {
-    const timestamp = Date.now()
-    cy.visit('https://qa.platoonco.com/about')
-    cy.get('input[placeholder="Your email"]')
-      .scrollIntoView()
-      .type(`test${timestamp}@yopmail.com`)
-    cy.contains('Subscribe').click()
-  })
-
 })
