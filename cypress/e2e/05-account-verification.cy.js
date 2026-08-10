@@ -51,7 +51,7 @@ beforeEach(() => {
   cy.url()
     .should('include', '/account-verification', {timeout: 10000})
 
-  cy.wait(6000)
+  cy.wait(3500)
  })
 
  // BUSINESS DOCUMENTS
