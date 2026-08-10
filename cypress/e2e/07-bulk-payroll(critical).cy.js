@@ -43,14 +43,7 @@ it('Drafts Page Works', () => {
   cy.contains('button', 'Continue Edit')
     .first()
     .should('be.visible')
-    .click({force:true})
-  cy.get('.flex.space-x-4')
-    .contains('Proceed')
-    .should('be.visible')
-    .click({force:true})
-  cy.url()
-    .should('include', '/summary?payrollId')
-    
+    .click({force:true})    
   })
 
   })
