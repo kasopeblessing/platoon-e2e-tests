@@ -55,4 +55,13 @@ it('Pricing button goes to the pricing page', () => {
       .should('be.visible')
   })
 
+  it('Book a Demo works', () => {
+    cy.contains('Book a Demo')
+      .click()
+    cy.url()
+      .should('include', '/contact')
+    cy.contains('Talk to us about your payroll')
+      .should('be.visible')
+  })
+
 })
