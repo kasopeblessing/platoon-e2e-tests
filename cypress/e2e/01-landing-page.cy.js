@@ -46,15 +46,6 @@ it('Pricing button goes to the pricing page', () => {
       .should('be.visible')
   })
 
-  it('Contact button goes to the contact page', () => {
-    cy.contains('Contact')
-      .click()
-    cy.url()
-      .should('include', '/contact')
-    cy.contains('Talk to us about your payroll')
-      .should('be.visible')
-  })
-
   it('Book a Demo works', () => {
     cy.contains('Book a Demo')
       .click()
@@ -64,4 +55,40 @@ it('Pricing button goes to the pricing page', () => {
       .should('be.visible')
   })
 
-})
+  it('Contact button goes to the contact page', () => {
+    cy.contains('Contact')
+      .click()
+    cy.url()
+      .should('include', '/contact')
+    cy.contains('Talk to us about your payroll')
+      .should('be.visible')
+
+  })
+    
+  it('Explore the product card works', () => {
+    cy.contains('Contact')
+      .click()
+    cy.url()
+      .should('include', '/contact')
+    cy.contains('Explore the product')
+      .click()
+      .url()
+      .should('include', '/payroll')
+
+  })
+  
+  it('See pricing card works', () => {
+    cy.contains('Contact')
+      .click()
+    cy.url()
+      .should('include', '/contact')
+    cy.contains('See pricing')
+      .click()
+      .url()
+      .should('include', '/pricing#calculator')
+
+  })
+
+  })
+
+
