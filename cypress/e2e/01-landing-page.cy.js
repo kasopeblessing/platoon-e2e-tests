@@ -89,6 +89,32 @@ it('Pricing button goes to the pricing page', () => {
 
   })
 
+  it('Contact us form', () => {
+    cy.contains('Contact')
+      .click()
+    cy.url()
+      .should('include', '/contact')
+    cy.get('input[id="first-name"]')
+      .type('QA')
+    cy.get('input[id="last-name"]')
+      .type('test')
+    cy.get('input[id="email"]')
+      .type('qatest@yopmail.com')
+    cy.get('input[id="phone"]')
+      .type('09011111212')
+    cy.get('input[id="organisation"]')
+      .type('QA ltd')
+    cy.get('select[id="topic"]')
+      .click({force:true})
+    cy.contains('Sales')
+      .should('be.visible')
+      .click()
+    cy.get('textarea[id="id"]')
+      .type('QA lane 1234')
+    
+
+  })
+
   })
 
 
