@@ -22,6 +22,8 @@ describe('Landing Page', () => {
 it('Product button goes to the product page', () => {
     cy.contains('Product')
       .click()
+    cy.contains('Bulk Disbursement')
+      .click()
     cy.url()
       .should('include', '/payroll')
     cy.contains('THE PRODUCT', { timeout: 4000 })
@@ -105,7 +107,7 @@ it('Pricing button goes to the pricing page', () => {
     cy.get('input[id="organisation"]')
       .type('QA ltd')
     cy.get('select[id="topic"]')
-      .click({force:true})
+      .click()
     cy.contains('Sales')
       .should('be.visible')
       .click()
