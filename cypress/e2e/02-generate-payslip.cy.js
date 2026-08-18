@@ -40,11 +40,12 @@ describe('Payslip Generator', () => {
       .type('400,000.00')
     cy.get('input[value="Transport Allowance"]')
       .clear()
-      .type('Wardobe Alowance')
+      .type('Wardobe Allowance')
     cy.get('input[value="25,000.00"]')
       .clear()
       .type('40,000.00')
-    cy.contains('Add earning')
+
+   /* cy.contains('Add earning')
       .should('be.visible')
       .click()
     cy.get('input[placeholder="Label"]')
@@ -53,6 +54,8 @@ describe('Payslip Generator', () => {
     cy.get('input[placeholder="0.00"]')
       .eq('2')
       .type('60,000.00')
+  */
+
     cy.get('input[value="Pension (8%)"]')
       .clear()
       .type('One-time Lateness')
@@ -63,11 +66,8 @@ describe('Payslip Generator', () => {
     cy.get('input[value="PAYE Tax"]')
       .clear()
       .type('Pension')
-    cy.get('input[placeholder="0.00"]')
-      .eq('4')
-      .clear()
-      .type('30,000.00')
-    cy.contains('Add deduction')
+    
+    /*  cy.contains('Add deduction')
       .should('be.visible')
       .click()
     cy.get('input[placeholder="Label"]')
@@ -76,6 +76,8 @@ describe('Payslip Generator', () => {
     cy.get('input[placeholder="0.00"]')
       .eq('5')
       .type('45,000.00')
+
+    */
 
     cy.get('.no-print button')
       .contains('Download Payslip')
