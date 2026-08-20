@@ -88,7 +88,7 @@ describe('Payslip Generator', () => {
  })
 
  it('Pricing button on this page works', ()=> {
-     cy.contains('See Growth pricing')
+     cy.contains('See Growth Pricing')
        .should('be.visible')
        .click()
      cy.url()
